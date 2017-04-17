@@ -1,6 +1,6 @@
 # webpack-primary
 
-Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本片博客主要是关于webpack一些基础知识讲解，webpack入门学习笔记。
+Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本片博客主要是关于webpack一些基础知识讲解，webpack入门学习笔记，工程已经上传，测试的时候，记得修改webpack.config.js，把对应部分的注释取消掉
 
 ## webpack安装
 
@@ -10,7 +10,7 @@ Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖�
 # Linux & Mac
 $ npm install --save webpack webpack-dev-server 
 ```
-注：运行指令加上--save会把依赖添加到package.json
+注：运行指令加上--save会把依赖添加到dependencies
 
 ## 入口文件设置
 
@@ -22,7 +22,7 @@ document.write('<h1>Hello World</h1>');
 ```
 
 ```html
-// index.html
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +67,7 @@ document.write('<h1>Hello World index2.js</h1>');
 ```
 
 ```html
-// index1.html
+<!-- index1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,7 +141,7 @@ ReactDOM.render(
 ```
 
 ```html
-// index3.html
+<!-- index3.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -344,6 +344,8 @@ module.exports = {
 $ webpack-dev-server 
 ```
 
- 
+## Hot Module Replacement  
+
+HMR即webpack的模块热替换，
  
  
