@@ -78,15 +78,48 @@
 
 /*open-browser-webpack-plugin*/
 
+// var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+// module.exports = {
+//     entry: './index5.js',
+//     output: {
+//         filename: 'bundle.js'
+//     },
+//     plugins: [
+//         new OpenBrowserPlugin({
+//             url: 'http://localhost:8080'
+//         })
+//     ]
+// };
+
+/*Hot Module Replacement*/
+
+var webpack = require('webpack');
+var path = require('path');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
 module.exports = {
-    entry: './index5.js',
+    entry: [
+        './index6.js'
+    ],
     output: {
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/static/'
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({
-            url: 'http://localhost:8080'
+            url: 'http://localhost:8080/index5.html'
         })
-    ]
+    ],
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015', 'react']
+            },
+            include: path.join(__dirname, '.')
+        }]
+    }
 };
