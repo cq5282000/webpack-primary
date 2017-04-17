@@ -58,12 +58,12 @@ $ webpack-dev-server
 
 ```javascript
 // index1.js
-document.write('<h1>Hello World index1.html</h1>');
+document.write('<h1>Hello World index1.js</h1>');
 ```
 
 ```javascript
 // index2.js
-document.write('<h1>Hello World index2.html</h1>');
+document.write('<h1>Hello World index2.js</h1>');
 ```
 
 ```html
