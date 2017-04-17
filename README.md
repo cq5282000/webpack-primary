@@ -213,6 +213,12 @@ Webpack允许你在JS文件中require CSS , 然后用CSS加载器预加载CSS，
 # Linux & Mac
 $ npm install --save css-loader style-loader
 ```
+```css
+//app.css
+body{
+    background-color: blue;
+}
+```
 
 ```javascript
 // index3.js
@@ -245,3 +251,99 @@ module.exports = {
 $ webpack-dev-server 
 ```
 然后访问 http://127.0.0.1:8080/
+
+### image loader
+
+首先安装图片加载器
+
+```bash
+# Linux & Mac
+$ npm install --save url-loader
+```
+此时会提示需要安装file-loader，版本无要求
+
+```bash
+# Linux & Mac
+$ npm install --save file-loader
+```
+
+```javascript
+// index4.js
+var img1 = document.createElement("img");
+img1.src = require("./1.jpg");
+document.body.appendChild(img1);
+```
+
+```javascript
+// webpack.config.js
+module.exports = {
+    entry: './index4.js',
+    output: {
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders:[
+            {
+                test: /\.(png|jpg)?$/,
+                loader: 'url-loader?limit=8192'
+            },
+        ]
+    }
+};
+```
+小于8192字节的图片将会被转化base64数据流，大于他的正常链接传输
+
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+然后访问 http://127.0.0.1:8080/
+
+## Plugins
+
+webpack有一个插件系统来扩展它的功能，这里我挑两个个人觉得比较有意思的插件来给大家讲解一下
+
+### Open Browser Webpack Plugin 
+
+open-browser-webpack-plugin 插件可以当webpack服务器启动时自动打开浏览器设置。
+
+首先安装open-browser-webpack-plugin插件
+
+```bash
+# Linux & Mac
+$ npm install --save open-browser-webpack-plugin
+```
+
+```javascript
+// index5.js
+document.write('<h1>open-browser-webpack-plugin</h1>');
+```
+
+```javascript
+// webpack.config.js
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+module.exports = {
+    entry: './index5.js',
+    output: {
+        filename: 'bundle.js'
+    },
+    plugins: [
+        new OpenBrowserPlugin({
+            url: 'http://localhost:8080'
+        })
+    ]
+};
+```
+
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+
+ 
+ 
+ 
