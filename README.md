@@ -67,7 +67,7 @@ document.write('<h1>Hello World index2.js</h1>');
 ```
 
 ```html
-// index1.html
+<!-- index1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,7 +141,7 @@ ReactDOM.render(
 ```
 
 ```html
-// index3.html
+<!-- index3.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
