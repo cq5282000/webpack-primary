@@ -102,9 +102,9 @@ $ webpack-dev-server
 ```
 然后访问 http://127.0.0.1:8080/index1.html
 
-## 入口文件设置
+## loader－加载器
 
-加载器是一个能编译你app资源文件的预加载器。
+loader是一个能编译你app资源文件的预加载器。
 
 ### babal-loader
 
@@ -204,4 +204,44 @@ $ webpack-dev-server
 ```
 然后访问 http://127.0.0.1:8080/index3.html
 
+### css-loader
 
+Webpack允许你在JS文件中require CSS , 然后用CSS加载器预加载CSS，你必须用两个加载器来编译CSS文件，第一个是css-loader用来阅读CSS文件，另一个是style-loader来插入style标签到HTML页面中,不同的加载器靠感叹号标记链接（!）,首先安装这两个加载器：
+
+
+```bash
+# Linux & Mac
+$ npm install --save css-loader style-loader
+```
+
+```javascript
+// index3.js
+require('./app.css');
+```
+
+
+```javascript
+// webpack.config.js
+module.exports = {
+    entry: './index3.js',
+    output: {
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders:[
+            {
+                test: /\.css?$/,
+                loader: 'style-loader!css-loader'
+            },
+        ]
+    }
+};
+```
+
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+然后访问 http://127.0.0.1:8080/
