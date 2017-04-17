@@ -300,3 +300,50 @@ module.exports = {
 $ webpack-dev-server 
 ```
 然后访问 http://127.0.0.1:8080/
+
+## Plugins
+
+webpack有一个插件系统来扩展它的功能，这里我挑两个个人觉得比较实用的插件来给大家讲解一下
+
+### Open Browser Webpack Plugin 
+
+open-browser-webpack-plugin 插件可以当webpack服务器启动时自动打开浏览器设置。
+
+首先安装open-browser-webpack-plugin插件
+
+```bash
+# Linux & Mac
+$ npm install --save open-browser-webpack-plugin
+```
+
+```javascript
+// index5.js
+document.write('<h1>open-browser-webpack-plugin</h1>');
+```
+
+```javascript
+// webpack.config.js
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+module.exports = {
+    entry: './index5.js',
+    output: {
+        filename: 'bundle.js'
+    },
+    plugins: [
+        new OpenBrowserPlugin({
+            url: 'http://localhost:8080'
+        })
+    ]
+};
+```
+
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+
+ 
+ 
+ 
