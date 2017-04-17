@@ -53,3 +53,51 @@ module.exports = {
 $ webpack-dev-server 
 ```
 然后访问 http://127.0.0.1:8080
+
+### 多文件入口设置
+
+```javascript
+// index1.js
+document.write('<h1>Hello World index1.html</h1>');
+```
+
+```javascript
+// index2.js
+document.write('<h1>Hello World index2.html</h1>');
+```
+
+```html
+// index1.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <body>
+        <script type="text/javascript" src="bundle1.js"></script>
+        <script type="text/javascript" src="bundle2.js"></script>
+    </body>
+</html>
+```
+
+```javascript
+// webpack.config.js
+module.exports = {
+    entry: {
+        bundle1: './index1.js',
+        bundle2: './index2.js',
+    },
+    output: {
+        filename: '[name].js'
+    }
+};
+```
+
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+然后访问 http://127.0.0.1:8080/index1.html
