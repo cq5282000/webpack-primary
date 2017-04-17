@@ -344,6 +344,8 @@ module.exports = {
 $ webpack-dev-server 
 ```
 
- 
+## Hot Module Replacement  
+
+HMR即webpack的模块热替换，
  
  
