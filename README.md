@@ -213,6 +213,12 @@ Webpack允许你在JS文件中require CSS , 然后用CSS加载器预加载CSS，
 # Linux & Mac
 $ npm install --save css-loader style-loader
 ```
+```css
+//app.css
+body{
+    background-color: blue;
+}
+```
 
 ```javascript
 // index3.js
