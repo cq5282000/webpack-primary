@@ -251,3 +251,52 @@ module.exports = {
 $ webpack-dev-server 
 ```
 然后访问 http://127.0.0.1:8080/
+
+### image loader
+
+首先安装图片加载器
+
+```bash
+# Linux & Mac
+$ npm install --save url-loader
+```
+此时会提示需要安装file-loader，版本无要求
+
+```bash
+# Linux & Mac
+$ npm install --save file-loader
+```
+
+```javascript
+// index4.js
+var img1 = document.createElement("img");
+img1.src = require("./1.jpg");
+document.body.appendChild(img1);
+```
+
+```javascript
+// webpack.config.js
+module.exports = {
+    entry: './index4.js',
+    output: {
+        filename: 'bundle.js'
+    },
+    module: {
+        loaders:[
+            {
+                test: /\.(png|jpg)?$/,
+                loader: 'url-loader?limit=8192'
+            },
+        ]
+    }
+};
+```
+小于8192字节的图片将会被转化base64数据流，大于他的正常链接传输
+
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+然后访问 http://127.0.0.1:8080/
