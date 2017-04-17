@@ -122,6 +122,13 @@ $ npm install --save babel-loader
 $ npm install --save babel-core
 ```
 
+然后安装babel-preset-es2015,添加对ES2015的支持,
+
+```bash
+# Linux & Mac
+$  npm install --save babel-preset-es2015
+```
+
 ```javascript
 // index.jsx
 const React = require('react');
@@ -196,4 +203,5 @@ module.exports = {
 $ webpack-dev-server 
 ```
 然后访问 http://127.0.0.1:8080/index3.html
+
 
