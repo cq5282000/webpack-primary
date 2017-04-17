@@ -101,3 +101,99 @@ module.exports = {
 $ webpack-dev-server 
 ```
 然后访问 http://127.0.0.1:8080/index1.html
+
+## 入口文件设置
+
+加载器是一个能编译你app资源文件的预加载器。
+
+### babal-loader
+
+Babel-loader能编译JSX/ES6文件为JS文件,首先安装babel-loader
+
+```bash
+# Linux & Mac
+$ npm install --save babel-loader
+```
+
+此时会提示安装 ^6.4.0，需要安装babel-core@^6.0.0，运行
+
+```bash
+# Linux & Mac
+$ npm install --save babel-core
+```
+
+```javascript
+// index.jsx
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.querySelector('#wrapper')
+);
+```
+
+```html
+// index3.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <body>
+        <div id="wrapper"></div>
+        <script type="text/javascript" src="bundle.js"></script>
+    </body>
+</html>
+```
+
+```javascript
+// webpack.config.js
+module.exports = {
+  entry: './index.jsx',
+  output: {
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders:[
+      {
+        test: /\.js[x]?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader?presets[]=es2015&presets[]=react'
+      },
+    ]
+  }
+};
+```
+webpack.config.js的配置文件也可以写成如下形式
+
+```javascript
+// webpack.config.js
+module.exports = {
+  entry: './index.jsx',
+  output: {
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders:[
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+            presets: ['es2015', 'react']
+        }
+      },
+    ]
+  }
+};
+```
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+然后访问 http://127.0.0.1:8080/index3.html
+
