@@ -45,3 +45,11 @@ module.exports = {
     }
 };
 ```
+
+启动服务器
+
+```bash
+# Linux & Mac
+$ webpack-dev-server 
+```
+然后访问 http://127.0.0.1:8080
