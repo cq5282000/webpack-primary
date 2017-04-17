@@ -22,7 +22,7 @@ document.write('<h1>Hello World</h1>');
 ```
 
 ```html
-// index.html
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
