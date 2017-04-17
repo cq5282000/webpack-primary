@@ -44,17 +44,49 @@
 
 /*css-loader*/
 
+// module.exports = {
+//     entry: './index3.js',
+//     output: {
+//         filename: 'bundle.js'
+//     },
+//     module: {
+//         loaders:[
+//             {
+//                 test: /\.css?$/,
+//                 loader: 'style-loader!css-loader'
+//             },
+//         ]
+//     }
+// };
+
+/*image-loader*/
+
+// module.exports = {
+//     entry: './index4.js',
+//     output: {
+//         filename: 'bundle.js'
+//     },
+//     module: {
+//         loaders:[
+//             {
+//                 test: /\.(png|jpg)?$/,
+//                 loader: 'url-loader?limit=8192'
+//             },
+//         ]
+//     }
+// };
+
+/*open-browser-webpack-plugin*/
+
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
-    entry: './index3.js',
+    entry: './index5.js',
     output: {
         filename: 'bundle.js'
     },
-    module: {
-        loaders:[
-            {
-                test: /\.css?$/,
-                loader: 'style-loader!css-loader'
-            },
-        ]
-    }
+    plugins: [
+        new OpenBrowserPlugin({
+            url: 'http://localhost:8080'
+        })
+    ]
 };
