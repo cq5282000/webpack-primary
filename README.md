@@ -303,7 +303,7 @@ $ webpack-dev-server
 
 ## Plugins
 
-webpack有一个插件系统来扩展它的功能，这里我挑两个个人觉得比较实用的插件来给大家讲解一下
+webpack有一个插件系统来扩展它的功能，这里我挑两个个人觉得比较有意思的插件来给大家讲解一下
 
 ### Open Browser Webpack Plugin 
 
