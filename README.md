@@ -370,6 +370,42 @@ import App from './App';
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
  
+ ```javascript
+// webpack.config.js
+var webpack = require('webpack');
+var path = require('path');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
+module.exports = {
+    entry: [
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://localhost:8080',
+        './index6.js'
+    ],
+    output: {
+        filename: 'bundle.js',
+        publicPath: '/static/'
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new OpenBrowserPlugin({
+            url: 'http://localhost:8080/index5.html'
+        })
+    ],
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015', 'react']
+            },
+            include: path.join(__dirname, '.')
+        }]
+    }
+};
+```
+ 
 ```html
 <!-- index5.html -->
 <!DOCTYPE html>
