@@ -346,6 +346,49 @@ $ webpack-dev-server
 
 ## Hot Module Replacement  
 
-HMR即webpack的模块热替换，
+HMR即webpack的模块热替换, 添加, 或者删除模块, 同时应用持续运行, 不需要页面刷新。
+
+```javascript
+// App.js
+import React, { Component } from 'react';
+
+export default class App extends Component {
+    render() {
+        return (
+            <h1>Hot module Replacement</h1>
+        );
+    }
+}
+```
+
+```javascript
+// index6.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
  
- 
+```html
+<!-- index5.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <body>
+        <div id='root'></div>
+        <script type="text/javascript" src="/static/bundle.js"></script>
+    </body>
+</html>
+```
+
+启动热模块替换
+
+```bash
+# Linux & Mac
+$ webpack-dev-server --hot --inline
+```
+此时不要关闭服务器，开启终端，用vim编辑App.js，观察到效果。
