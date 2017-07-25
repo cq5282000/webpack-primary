@@ -46,6 +46,13 @@ module.exports = {
 };
 ```
 
+编译文件
+
+```bash
+# Linux & Mac
+$ webpack 
+```
+
 启动服务器
 
 ```bash
